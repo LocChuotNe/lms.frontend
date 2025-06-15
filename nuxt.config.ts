@@ -1,5 +1,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  css: ['~/assets/css/tailwind.css'],
+  modules: ["@nuxtjs/tailwindcss"],
+  css: ["~/assets/css/index.css"],
+  postcss: {
+  plugins: {
+    "@tailwindcss/postcss": {},
+    autoprefixer: {},
+  }
+  }
 })
