@@ -2,6 +2,14 @@
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+Yêu cầu hệ thống
+**Node.js** >= 18.x
+**npm
+**Nuxt 3
+**Axios
+**Tailwind CSS
+**Git
+
 ## Setup
 
 Cài đặt thư viện frontend
@@ -9,74 +17,6 @@ Cài đặt thư viện frontend
 ```bash
 # npm
 npm install
-npm install axios
-npm install -D @tailwindcss/postcss
-npm install -D typescript
-```
-
-## Setup package
-
-***cấu hình nuxt.config.ts:***
-
- modules: ["@nuxtjs/tailwindcss"],
-
-  css: ["~/assets/css/index.css"],
-
-  postcss: {
-
-  plugins: {
-
-    "@tailwindcss/postcss": {},
-
-    autoprefixer: {},
-
-  }
-
-***Tạo file assets/css/index.css, cập nhật***
-
-{ @tailwind base;
-
-@tailwind components;
-
-@tailwind utilities; }
-
-***Cập nhật tsconfig.json***
-
-{
-
-  // https://nuxt.com/docs/guide/concepts/typescript
-
-  "extends": "./.nuxt/tsconfig.json"
-
-}
-
-***Cập nhật Tailwind***
-
-exportdefault {
-
-    content: [
-
-    "./components/**/*.{js,ts,vue}",
-
-    "./layouts/**/*.vue",
-
-    "./pages/**/*.{vue}",
-
-    "./app.vue",
-
-    "./assets/css/*.css"
-
-    ],
-
-    theme: {
-
-    extend: {},
-
-    },
-
-    plugins: [],
-
-}
 
 ## Development Server
 
@@ -84,6 +24,8 @@ Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
+rm -rf .nuxt node_modules
+npm install
 npm run dev
 
 ```
