@@ -3,12 +3,12 @@
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 Yêu cầu hệ thống
-**Node.js** >= 18.x
-**npm
-**Nuxt 3
-**Axios
-**Tailwind CSS
-**Git
+Node.js** >= 18.x
+npm
+Nuxt 3
+Axios
+Tailwind CSS
+Git
 
 ## Setup
 
