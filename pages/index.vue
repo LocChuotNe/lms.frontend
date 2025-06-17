@@ -2,10 +2,13 @@
   <div>
     <h1 class="text-3xl font-bold text-blue-500">Dữ liệu API:</h1>
     <p>{{ message }}</p>
+     <Admin />
   </div>
 </template>
 
 <script setup>
+import Admin from '~/components/Admin/index.vue'
+
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
