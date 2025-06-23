@@ -1,10 +1,3 @@
-<template>
-  <div>
-    <h1 class="text-3xl font-bold text-blue-500">Dữ liệu API:</h1>
-    <p>{{ message }}</p>
-  </div>
-</template>
-
 <script setup >
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
@@ -13,7 +6,7 @@ const message = ref('Đang tải...');
 
 onMounted(async () => {
   definePageMeta({
-        layout: 'default, error'
+        layout: 'default'
       })
 
     try {
@@ -26,3 +19,11 @@ onMounted(async () => {
     }
   });
 </script>
+
+<template>
+  <div>
+    <NuxtLink to="/admin/user/1">Post 1</NuxtLink>
+    <h1 class="text-3xl font-bold text-blue-500">Dữ liệu API:</h1>
+    <p>{{ message }}</p>
+  </div>
+</template>

@@ -1,11 +1,11 @@
-<script setup lang="ts">
-  import UserTable from '~/components/admin/UserTable.vue'
-</script>
-
 <template>
-  <div>
-    <p>Some default layout content shared across all pages</p>
-    <slot />
-    <UserTable />
-  </div>
+  <a-layout>
+    <Sidebar />
+    <a-layout class="min-h-screen">
+      <AppHeader />
+      <a-layout-content class="p-6 bg-gray-50">
+        <router-view />
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
