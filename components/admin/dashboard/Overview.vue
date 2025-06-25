@@ -1,113 +1,105 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <div class="max-w-full p-4 md:p-6">
-        <div class="grid grid-rows-3 grid-flow-col gap-4">
-            <div class="col-span-2">
-                <div class="grid grid-cols-2 gap-6">
-                    <a-card class="shadow-sm border-gray-100">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                            <UserOutlined class="text-xl text-blue-600" />
-                            </div>
+    <div class="max-w-full p-4 md:p-6 grid gap-6">
+        <div class="grid grid-cols-3 gap-6">
+            <div class="grid gap-6 col-span-2">
+              <div class="grid grid-cols-2 gap-6">
+                <a-card class="shadow-sm border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <UserOutlined class="text-xl text-blue-600" />
                         </div>
-                        <div class="mb-2">
-                            <p class="text-gray-600 text-sm">Customers</p>
-                            <h3 class="text-2xl font-bold text-gray-900">3,782</h3>
+                    </div>
+                    <div class="mb-2">
+                        <p class="text-gray-600 text-sm">Customers</p>
+                        <h3 class="text-2xl font-bold text-gray-900">3,782</h3>
+                    </div>
+                    <div class="flex items-center text-green-600 text-sm">
+                        <ArrowUpOutlined class="mr-1" />
+                        <span>11.01%</span>
+                    </div>
+                </a-card>
+                <a-card class="shadow-sm border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <ShoppingOutlined class="text-xl text-blue-600" />
                         </div>
-                        <div class="flex items-center text-green-600 text-sm">
-                            <ArrowUpOutlined class="mr-1" />
-                            <span>11.01%</span>
-                        </div>
-                    </a-card>
-                    <a-card class="shadow-sm border-gray-100">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                            <ShoppingOutlined class="text-xl text-blue-600" />
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <p class="text-gray-600 text-sm">Orders</p>
-                            <h3 class="text-2xl font-bold text-gray-900">5,359</h3>
-                        </div>
-                        <div class="flex items-center text-red-600 text-sm">
-                            <ArrowDownOutlined class="mr-1" />
-                            <span>9.05%</span>
-                        </div>
-                    </a-card>
-                </div>
-            </div>
-            <div class="row-span-2 col-span-2">
+                    </div>
+                    <div class="mb-2">
+                        <p class="text-gray-600 text-sm">Orders</p>
+                        <h3 class="text-2xl font-bold text-gray-900">5,359</h3>
+                    </div>
+                    <div class="flex items-center text-red-600 text-sm">
+                        <ArrowDownOutlined class="mr-1" />
+                        <span>9.05%</span>
+                    </div>
+                </a-card>
+              </div>
+              <div class="">
                 <a-card class="shadow-sm border-gray-100">
                     <template #extra>
-                    <MoreOutlined class="text-gray-400" />
+                      <MoreOutlined class="text-gray-400" />
                     </template>
                     <template #title>
-                    <span class="text-lg font-semibold">Monthly Sales</span>
+                      <span class="text-lg font-semibold">Monthly Sales</span>
                     </template>
-                    
                     <div class="h-64">
-                    <canvas ref="monthlyChart"></canvas>
+                      <canvas ref="monthlyChart"></canvas>
                     </div>
                 </a-card>
+              </div>
             </div>
-            <div class="row-span-3">
-                <!-- Monthly Target Card -->
-                <a-card class="shadow-sm border-gray-100">
-                    <template #extra>
-                        <MoreOutlined class="text-gray-400" />
-                    </template>
-                    <div class="mb-4">
-                        <h3 class="text-lg font-semibold">Monthly Target</h3>
-                        <p class="text-gray-600 text-sm">Target you've set for each month</p>
-                    </div>
-                    
-                    <!-- Circular Progress -->
-                    <div class="flex items-center justify-center mb-6">
-                        <a-progress
-                        type="circle"
-                        :percent="75.55"
-                        :width="120"
-                        :stroke-color="{ '0%': '#108ee9', '100%': '#87d068' }"
-                        >
-                        <template #format="percent">
-                            <div class="text-center">
-                            <div class="text-xl font-bold">{{ percent }}%</div>
-                            <div class="text-xs text-green-600">+10%</div>
-                            </div>
-                        </template>
-                        </a-progress>
-                    </div>
-
-                    <div class="text-center mb-4">
-                        <p class="text-sm text-gray-600">You earn $3287 today, it's higher than last month.</p>
-                        <p class="text-sm text-gray-600">Keep up your good work!</p>
-                    </div>
-
-                    <a-row :gutter="16">
-                        <a-col :span="8" class="text-center">
-                        <p class="text-xs text-gray-500">Target</p>
-                        <p class="text-sm font-semibold flex items-center justify-center">
-                            $20K <ArrowDownOutlined class="ml-1 text-red-500 text-xs" />
-                        </p>
-                        </a-col>
-                        <a-col :span="8" class="text-center">
-                        <p class="text-xs text-gray-500">Revenue</p>
-                        <p class="text-sm font-semibold flex items-center justify-center">
-                            $20K <ArrowUpOutlined class="ml-1 text-green-500 text-xs" />
-                        </p>
-                        </a-col>
-                        <a-col :span="8" class="text-center">
-                        <p class="text-xs text-gray-500">Today</p>
-                        <p class="text-sm font-semibold flex items-center justify-center">
-                            $20K <ArrowUpOutlined class="ml-1 text-green-500 text-xs" />
-                        </p>
-                        </a-col>
-                    </a-row>
+            <div class="">
+              <a-card class="shadow-sm border-gray-100">
+                  <template #extra>
+                      <MoreOutlined class="text-gray-400" />
+                  </template>
+                  <div class="mb-4">
+                      <h3 class="text-lg font-semibold">Monthly Target</h3>
+                      <p class="text-gray-600 text-sm">Target you've set for each month</p>
+                  </div>
+                  <div class="flex items-center justify-center mb-6">
+                    <a-progress
+                      type="circle"
+                      :percent="75.55"
+                      :width="120"
+                      :stroke-color="{ '0%': '#108ee9', '100%': '#87d068' }"
+                      >
+                      <template #format="percent">
+                          <div class="text-center">
+                          <div class="text-xl font-bold">{{ percent }}%</div>
+                          <div class="text-xs text-green-600">+10%</div>
+                          </div>
+                      </template>
+                    </a-progress>
+                  </div>
+                  <div class="text-center mb-4">
+                    <p class="text-sm text-gray-600">You earn $3287 today, it's higher than last month.</p>
+                    <p class="text-sm text-gray-600">Keep up your good work!</p>
+                  </div>
+                  <a-row :gutter="16">
+                    <a-col :span="8" class="text-center">
+                      <p class="text-xs text-gray-500">Target</p>
+                      <p class="text-sm font-semibold flex items-center justify-center">
+                          $20K <ArrowDownOutlined class="ml-1 text-red-500 text-xs" />
+                      </p>
+                    </a-col>
+                      <a-col :span="8" class="text-center">
+                      <p class="text-xs text-gray-500">Revenue</p>
+                      <p class="text-sm font-semibold flex items-center justify-center">
+                          $20K <ArrowUpOutlined class="ml-1 text-green-500 text-xs" />
+                      </p>
+                    </a-col>
+                    <a-col :span="8" class="text-center">
+                      <p class="text-xs text-gray-500">Today</p>
+                      <p class="text-sm font-semibold flex items-center justify-center">
+                          $20K <ArrowUpOutlined class="ml-1 text-green-500 text-xs" />
+                      </p>
+                    </a-col>
+                  </a-row>
                 </a-card>
             </div>
-            
         </div>
-
         <a-card class="shadow-sm border-gray-100">
         <template #title>
             <div>
@@ -126,7 +118,7 @@
         <div class="h-64">
             <canvas ref="statisticsChart"></canvas>
         </div>
-        </a-card>
+      </a-card>
       <!-- Bottom Row -->
       <a-row :gutter="24">
         <!-- Customer Demographics -->

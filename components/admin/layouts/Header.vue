@@ -1,3 +1,43 @@
+<script setup lang="ts">
+  import { ref, computed, defineComponent  } from 'vue'
+
+  const search = ref('')
+  const collapsed = defineModel<boolean>('collapsed', { required: true })
+  const toggle = () => (collapsed.value = !collapsed.value)
+
+  const iconClass = computed(() => 'text-gray-500 text-lg cursor-pointer')
+  import { useRouter } from 'vue-router'
+  import axios from 'axios'
+
+  const router = useRouter()
+
+  const handleLogout = async () => {
+  try {
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      router.push('/auth/signin')
+      return
+    }
+
+    await axios.post('/api/auth/logout', {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    })
+
+    localStorage.removeItem('token')
+    router.push('/auth/signin')
+  } catch (error) {
+    console.error('Lỗi khi đăng xuất:', error)
+    localStorage.removeItem('token')
+    router.replace('/auth/signin')
+  }
+}
+</script>
+
+
 <template>
   <a-layout-header class="bg-white px-4 shadow-sm h-16 flex items-center justify-between">
     <div class="flex items-center gap-4 w-full lg:w-1/2">
@@ -46,14 +86,14 @@
         <div class="relative">
             <a-dropdown :trigger="['click']">
                 <a class="ant-dropdown-link" @click.prevent>
-                    <div class="flex items-center gap-2 cursor-pointer">
-                        <img src="assets/images/user/owner.jpg" 
-                            alt=""
-                            class="w-10 h-10 rounded-full object-cover"
-                        >
-                        <p class="text-sm text-gray-900 font-medium leading-none m-0">Musharof</p>
-                        <DownOutlined class="text-gray-400" />
-                    </div>
+                  <div class="flex items-center gap-2 cursor-pointer">
+                      <img src="assets/images/user/owner.jpg" 
+                          alt=""
+                          class="w-10 h-10 rounded-full object-cover"
+                      >
+                      <p class="text-sm text-gray-900 font-medium leading-none m-0">Musharof</p>
+                      <DownOutlined class="text-gray-400" />
+                  </div>
                 </a>
                 <template #overlay>
                     <div class="bg-white border-gray-500 border-dashed drop-shadow-md w-64 p-3 space-y-2 mt-3 rounded-xl">
@@ -74,9 +114,9 @@
                                 <ExclamationCircleOutlined class="text-gray-400 inline-flex mr-2 text-lg" />
                                 <span class="text-[#667085] font-medium">Support"</span>
                             </a-menu-item>
-                            <a-menu-item key="4" class="custom-menu-item">
-                                <LogoutOutlined class="text-gray-400 inline-flex mr-2 text-lg" />
-                                <span class="text-red-500 font-medium">Sign Out</span>
+                            <a-menu-item key="signin" class="custom-menu-item" @click="handleLogout">
+                              <LogoutOutlined class="text-gray-400 inline-flex mr-2 text-lg" />
+                              <span class="text-red-500 font-medium">Sign Out</span>
                             </a-menu-item>
                         </a-menu>
                     </div>
@@ -86,25 +126,6 @@
     </div>
   </a-layout-header>
 </template>
-<script setup lang="ts">
-import {
-  AlignLeftOutlined,
-  BellOutlined,
-  DownOutlined,
-  UserOutlined,
-  SettingOutlined,
-  ExclamationCircleOutlined,
-  LogoutOutlined
-} from '@ant-design/icons-vue'
-
-import { ref, computed, defineComponent  } from 'vue'
-
-const search = ref('')
-const collapsed = defineModel<boolean>('collapsed', { required: true })
-const toggle = () => (collapsed.value = !collapsed.value)
-
-const iconClass = computed(() => 'text-gray-500 text-lg cursor-pointer')
-</script>
 
 <style scoped>
 .ant-layout-header {

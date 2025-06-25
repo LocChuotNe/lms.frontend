@@ -21,13 +21,11 @@ const handleMenuClick = (key: string) => {
         <template v-if="selectedContent === 'dashboard'">
           <AdminDashboardOverview />
         </template>
-
-        <template v-else-if="selectedContent === 'profile-view'">
-          <AdminProfileViewer />
+        <template v-else-if="selectedContent === 'user-student'">
+          <AdminUserUserStudent />
         </template>
-
-        <template v-else-if="selectedContent === 'profile-edit'">
-          <AdminProfileEditor />
+        <template v-else-if="selectedContent === 'user-instructors'">
+          <AdminUserUserInstructors />
         </template>
       </a-layout-content>
     </a-layout>

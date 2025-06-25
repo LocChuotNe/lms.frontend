@@ -49,11 +49,11 @@ watch(
                     <span class="font-medium">Profile</span>
                 </template>
 
-                <a-menu-item key="profile-view" @click="handleMenuClick('profile-view')">
-                    View Profile
+                <a-menu-item key="user-student" @click="handleMenuClick('user-student')">
+                    Quản lý học viên
                 </a-menu-item>
-                <a-menu-item key="profile-edit" @click="handleMenuClick('profile-edit')">
-                    Edit Profile
+                <a-menu-item key="user-instructors" @click="handleMenuClick('user-instructors')">
+                    Quản lý giảng viên
                 </a-menu-item>
                 <a-menu-item key="profile-security" @click="handleMenuClick('profile-security')">
                     Security Settings
