@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import AdminUserStudent from '~/components/admin/user/UserStudent.vue'
+import AdminUserInstructors from '~/components/admin/user/UserInstructors.vue'
 
 const collapsed = ref(false)
 const selectedContent = ref('dashboard') 
@@ -22,10 +24,10 @@ const handleMenuClick = (key: string) => {
           <AdminDashboardOverview />
         </template>
         <template v-else-if="selectedContent === 'user-student'">
-          <AdminUserUserStudent />
+          <AdminUserStudent />
         </template>
         <template v-else-if="selectedContent === 'user-instructors'">
-          <AdminUserUserInstructors />
+          <AdminUserInstructors />
         </template>
       </a-layout-content>
     </a-layout>

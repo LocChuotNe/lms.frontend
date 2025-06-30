@@ -36,8 +36,6 @@
   }
 }
 </script>
-
-
 <template>
   <a-layout-header class="bg-white px-4 shadow-sm h-16 flex items-center justify-between">
     <div class="flex items-center gap-4 w-full lg:w-1/2">
@@ -126,42 +124,3 @@
     </div>
   </a-layout-header>
 </template>
-
-<style scoped>
-.ant-layout-header {
-  background: #fff;
-}
-
-.trigger {
-  font-size: 18px;
-  padding: 12px 12px;
-  cursor: pointer;
-  border: 1px solid #667085;
-  color: #667085 !important;
-  border-radius: 10px;
-  transition: color 0.3s;
-}
-
-svg {
-  width: 1.125rem;
-  height: 1.125rem;
-}
-.cursor-pointer-custom{
-    border-radius: 100%;
-    padding: 10px;
-    border: 1px solid #667085;
-    color: #667085;
-}
-.custom-a-menu{
-    box-shadow: none !important;
-    border: none;
-    color: #344054;
-    padding: 0;
-}
-.custom-a-menu>*{
-    padding: 8px 12px !important;
-}
-.custom-menu-item>*{
-    align-items: center;
-}
-</style>

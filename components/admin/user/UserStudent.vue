@@ -122,7 +122,6 @@ const getStatusText = (status: string) => {
             className,
             ]"
         >
-        <!-- Card Header -->
         <div class="px-6 py-5">
         <div class="flex items-center justify-between">
             <div>

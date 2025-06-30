@@ -229,6 +229,13 @@ import {
   GlobalOutlined,
   FilterOutlined
 } from '@ant-design/icons-vue'
+import {
+  Chart,
+  registerables
+} from 'chart.js'
+
+Chart.register(...registerables)
+
 
 // Reactive data
 const statisticsPeriod = ref('monthly')
@@ -437,9 +444,7 @@ const initCharts = () => {
 }
 
 onMounted(() => {
-  nextTick(() => {
-    initCharts()
-  })
+  nextTick(() => initCharts())
 })
 </script>
 
