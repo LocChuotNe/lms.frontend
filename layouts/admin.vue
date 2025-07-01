@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted  } from 'vue'
+import { useCookie } from '#app'
+import { useRouter } from 'vue-router'
 import AdminUserStudent from '~/components/admin/user/UserStudent.vue'
 import AdminUserInstructors from '~/components/admin/user/UserInstructors.vue'
 
@@ -8,6 +10,14 @@ const selectedContent = ref('dashboard')
 const handleMenuClick = (key: string) => {
   selectedContent.value = key
 }
+const token = useCookie('auth_token')
+const router = useRouter()
+
+onMounted(() => {
+  if (!token.value) {
+    router.push('/auth/signin')
+  }
+})
 </script>
 
 <template>

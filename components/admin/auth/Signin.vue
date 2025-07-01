@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,onMounted  } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import { EyeOutlined, EyeInvisibleOutlined, GoogleOutlined, GithubOutlined } from '@ant-design/icons-vue'
+import { useCookie, navigateTo } from '#app'
 
 const { formData, errorMessage, isLoading, login } = useAuth()
 const showPassword = ref(false)
@@ -13,6 +14,13 @@ const togglePasswordVisibility = () => {
 const handleSubmit = async () => {
   await login()
 }
+
+onMounted(() => {
+  const user = useCookie('auth_user').value
+  if (user?.role === 'admin') return navigateTo('/admin/dashboard')
+  if (user?.role === 'teacher') return navigateTo('/teacher/home')
+  if (user?.role === 'student') return navigateTo('/')
+})
 </script>
 <template>
   <FullScreenLayout>
@@ -110,7 +118,7 @@ const handleSubmit = async () => {
         </a-form>
         <p class="text-sm text-center text-gray-500 dark:text-gray-400 mt-5">
           Don't have an account?
-          <NuxtLink to="/auth/register" class="text-blue-600 font-medium hover:underline dark:text-blue-400" >
+          <NuxtLink to="/auth/resgister" class="text-blue-600 font-medium hover:underline dark:text-blue-400" >
             Sign Up
           </NuxtLink>
         </p>

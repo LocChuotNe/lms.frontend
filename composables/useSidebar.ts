@@ -22,6 +22,7 @@
 
 import { ref, computed, onMounted, onUnmounted, provide, inject } from 'vue'
 import type { Ref } from 'vue' //
+const { isAdmin } = useUserRole()
 
 interface SidebarContextType {
   isExpanded: Ref<boolean>

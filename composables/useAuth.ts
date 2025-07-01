@@ -50,10 +50,17 @@ export const useAuth = () => {
     }
   }
 
+  const logout = async () => {
+    useCookie('auth_token').value = null
+    useCookie('auth_user').value = null
+    await router.push('/auth/signin') // hoặc route login của bạn
+  }
+
   return {
     formData,
     error,
     isLoading,
-    login
+    login,
+    logout
   }
 }
